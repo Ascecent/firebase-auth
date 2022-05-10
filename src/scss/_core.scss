@@ -38,20 +38,14 @@ $breakpoints: (
 // ------------
 
 // Primary
-$red: hsl(0, 100%, 74%);
-$green: hsl(154, 59%, 51%);
-
-// Accent
-$blue: hsl(248, 32%, 49%);
+$darkBlue: hsl(253, 100%, 16%);
+$dodgerBlue: hsl(201, 97%, 61%);
+$electricViolet: hsl(280, 88%, 58%);
+$purpleHeart: hsl(271, 75%, 53%);
 
 // Neutral
-$darkBlue: hsl(248, 10%, 26%);
-$grayishBlue: hsl(246, 25%, 77%);
 $black: hsl(0, 0%, 0%);
 $white: hsl(0, 0%, 100%);
-
-$blueVariant: hsl(281, 28%, 42%);
-$greenVariant: hsl(153, 40%, 54%);
 
 // ------------
 
@@ -115,3 +109,15 @@ $fontWeightBold: 700;
 // -------------------------------
 // GLOBAL STYLES
 // -------------------------------
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-color: $darkBlue;
+  color: $white;
+
+  &__illustration {
+    min-width: 50%;
+  }
+}

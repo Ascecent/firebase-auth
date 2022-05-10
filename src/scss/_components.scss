@@ -1,3 +1,25 @@
 /*=========================================================
 ================     COMPONENTS STYLES    =================
 =========================================================*/
+
+//================
+// Form
+//================
+
+.login_form {
+}
+
+//================
+
+//================
+// Lowpoly illustration
+//================
+
+.lowpoly-illustration {
+  background: url("./../assets/login_lowpoly.png") center/cover no-repeat;
+  width: 100%;
+  min-height: 100%;
+  border-radius: pxToRem(10);
+}
+
+//================
