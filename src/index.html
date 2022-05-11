@@ -4,19 +4,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Firebase | Auth component</title>
+
+  <script src="https://kit.fontawesome.com/8203d82a3e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+  <div class="page-loader-container show" id="page-loader">
+    <svg width="140" height="140" viewBox="0 0 140 140" class="page-loader-svg">
+      <g fill="none" fill-rule="evenodd">
+        <g fill="#fe34f2" fill-opacity=".15" transform="translate(0 6)">
+          <polygon points="70 0 136.574 48.369 111.145 126.631 28.855 126.631 3.426 48.369"></polygon>
+          <polygon points="70 18 119.455 53.931 100.565 112.069 39.435 112.069 20.545 53.931"></polygon>
+          <polygon points="70 34.86 101.727 57.911 89.609 95.209 50.391 95.209 38.273 57.911"></polygon>
+          <polygon points="70 50.898 84.864 61.697 79.186 79.171 60.814 79.171 55.136 61.697"></polygon>
+        </g>
+        <polygon class="polymorph" stroke-width="1" stroke="#fe34f2"
+          points="70 38.50472411519854 118.72078093440008 59.515780934400084 109.53040972159906 130.4292859839987 59.38719065599914 87.12627588480146 17.930724115198544 59.48831439359949 ">
+        </polygon>
+      </g>
+    </svg>
+  </div>
+
   <main class="main">
-    <section class="main__content">
-      <h1>Login</h1>
-      <p>If you are already a member, easily log in</p>
-      <form id="login_form" method="post"></form>
+    <section class="main__content" id="content-emitter">
+      <img id="icon" alt="Firebase Icon">
+      <h1 class="heading">Welcome back</h1>
+      <p class="greetings-text">Welcome!, it's a pleasure to have you back in, please enter your details.</p>
+      <form id="login_form" method="post">
+        <div class="form-control">
+          <input type="email" name="email" id="email" placeholder=" " class="form-input" autocomplete="off"
+            data-validation="email" data-error-message="Invalid email address, please enter a valid email address." />
+          <label for="email" class="form-label">Email address</label>
+          <span class="fa-solid fa-circle-check success-icon"></span>
+          <span class="fa-solid fa-circle-exclamation error-icon"></span>
+          <small class="error-message">Default Message</small>
+        </div>
+
+        <div class="form-control">
+          <input type="password" name="password" id="password" placeholder=" " class="form-input" required="true"
+            autocomplete="off" data-validation="empty" data-error-message="Required field" />
+          <label for="password" class="form-label">Password</label>
+          <span class="fa-solid fa-circle-check success-icon"></span>
+          <span class="fa-solid fa-circle-exclamation error-icon"></span>
+          <small class="error-message">Default Message</small>
+        </div>
+
+        <button id="submitFormButton" class="btn-signin disabled" type="submit">Sign in</button>
+      </form>
+      <p class="text-center">Don't have an account? <a href="#">Sign up</a></p>
     </section>
+
     <section class="main__illustration">
-      <div class="lowpoly-illustration"></div>
+      <div class="login-illustration" id="image-emitter"></div>
     </section>
   </main>
 </body>

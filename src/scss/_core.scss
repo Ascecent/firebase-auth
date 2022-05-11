@@ -38,14 +38,21 @@ $breakpoints: (
 // ------------
 
 // Primary
-$darkBlue: hsl(253, 100%, 16%);
-$dodgerBlue: hsl(201, 97%, 61%);
-$electricViolet: hsl(280, 88%, 58%);
-$purpleHeart: hsl(271, 75%, 53%);
+$pink: #fe34f2;
+$pinkDisabled: hsl(304, 99%, 80%);
+$pinkHover: hsl(304, 99%, 40%);
 
 // Neutral
+$success: #2ecc71;
+$error: #e74c3c;
 $black: hsl(0, 0%, 0%);
 $white: hsl(0, 0%, 100%);
+
+// Checkbox colors
+$border-default: #bbbbc1;
+$border-hover: #9898a3;
+$active: $pink;
+$active-tick: #ffffff;
 
 // ------------
 
@@ -110,14 +117,34 @@ $fontWeightBold: 700;
 // GLOBAL STYLES
 // -------------------------------
 
+body {
+  font-family: $fontFamilyPoppins;
+}
+
 .main {
   display: flex;
   justify-content: space-between;
   min-height: 100vh;
-  background-color: $darkBlue;
-  color: $white;
+  background-color: $white;
+  color: $black;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 50%;
+    padding-inline: 12%;
+  }
 
   &__illustration {
     min-width: 50%;
   }
+}
+
+a {
+  color: $pink;
+}
+
+.text-center {
+  text-align: center;
 }

@@ -2,24 +2,215 @@
 ================     COMPONENTS STYLES    =================
 =========================================================*/
 
+.heading {
+  font-size: pxToRem(40);
+}
+
+.greetings-text {
+  font-size: pxToRem(18);
+}
+
 //================
 // Form
 //================
 
-.login_form {
+#login_form {
+  margin-top: 2rem;
+}
+
+/* Form control component */
+.form-control {
+  position: relative;
+  padding: 0.8rem 0;
+  width: 100%;
+
+  .fa-solid {
+    position: absolute;
+    top: 1.7rem;
+    right: 1rem;
+    visibility: hidden;
+  }
+  /* ----- custom-form-control STATES BEGIN -------- */
+
+  /* SUCCESS STATE */
+  &.success {
+    .form-input {
+      outline: 2px solid $success;
+    }
+
+    .form-label {
+      color: $success !important;
+    }
+
+    .success-icon {
+      color: $success;
+      visibility: visible;
+    }
+  }
+
+  &.error {
+    .form-input {
+      outline: 2px solid $error;
+    }
+
+    .form-label {
+      color: $error !important;
+    }
+
+    .error-icon {
+      color: $error;
+      visibility: visible;
+    }
+
+    .error-message {
+      visibility: visible;
+    }
+  }
+}
+
+.form-label {
+  position: absolute;
+  top: 1.5rem;
+  left: 1rem;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #aaa;
+  transition: top 0.1s ease, font-size 0.1s ease, left 0.1s ease,
+    padding 0.1s ease;
+}
+
+/* Styles for the inputs of the form */
+.form-input {
+  padding: 1rem 2.5rem 1rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  height: 2.7rem;
+  outline: 2px solid #ccc;
+  border-radius: 0.1rem;
+
+  &:focus ~ .form-label,
+  &:not(:placeholder-shown) ~ .form-label {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.9rem;
+    left: 0.5rem;
+    top: -0.5rem;
+    color: #b4b4b4;
+  }
+
+  &:disabled ~ .form-label {
+    left: -0.5rem;
+    top: -1rem;
+    color: #b4b4b4;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  &:disabled {
+    background-color: #e0e0e0;
+    outline-color: #e0e0e0;
+  }
+
+  &:disabled ~ .form-label {
+    background-color: transparent;
+  }
+}
+
+.error-message {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  visibility: hidden;
+  color: $error;
+}
+
+.general-error {
+  display: none;
+  font-size: 1rem;
+  align-self: flex-start;
+  margin-top: 2rem;
+  color: #fff;
+  background-color: $error;
+  width: 100%;
+  padding: 1rem;
+
+  &.show {
+    display: block;
+  }
+}
+
+/* Submit button styling */
+.btn-signin {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  border: none;
+  background: $pink;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.success__btn {
+  padding: 1rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  background: $pink;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.error__btn {
+  padding: 1rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  background: $error;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-signin:hover,
+.success__btn:hover {
+  background: $pinkHover;
+}
+
+.btn-signin.disabled {
+  background: $pinkDisabled;
+  cursor: default;
 }
 
 //================
 
+.page-loader-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  background-color: $white;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  opacity: 1;
+}
+
 //================
-// Lowpoly illustration
+// Login illustration
 //================
 
-.lowpoly-illustration {
-  background: url("./../assets/login_lowpoly.png") center/cover no-repeat;
+.login-illustration {
+  background: url("./../assets/login.jpg") center/cover no-repeat;
   width: 100%;
   min-height: 100%;
-  border-radius: pxToRem(10);
 }
 
 //================
