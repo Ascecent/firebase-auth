@@ -19,13 +19,6 @@ const handleSignOut = () => {
 
 const app = initializeApp(config),
     auth = getAuth(),
-    user = auth.currentUser,
     logOutButton = document.getElementById('logOutButton')
 
 logOutButton.addEventListener('click', handleSignOut)
-
-if (user) {
-    document.getElementById('content').innerHTML = 'Welcome: ' + user;
-} else {
-    handleSignOut();
-}
