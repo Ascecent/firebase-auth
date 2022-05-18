@@ -9,14 +9,23 @@ import {
 
 import config from "./FirebaseConfig"
 
-const app = initializeApp(config)
-const auth = getAuth()
-const logOutButton = document.getElementById('logOutButton')
-
-logOutButton.addEventListener('click', () => {
+const handleSignOut = () => {
     signOut(auth).then(() => {
         window.location.href = './../index.html'
     }).catch((error) => {
         console.log(error)
     });
-})
+}
+
+const app = initializeApp(config),
+    auth = getAuth(),
+    user = auth.currentUser,
+    logOutButton = document.getElementById('logOutButton')
+
+logOutButton.addEventListener('click', handleSignOut)
+
+if (user) {
+    document.getElementById('content').innerHTML = 'Welcome: ' + user;
+} else {
+    handleSignOut();
+}

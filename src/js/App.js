@@ -93,15 +93,15 @@ signInForm.addEventListener('submit', function (e) {
         .then((userCredential) => {
             Swal.fire({
                 title: 'Success authentication',
-                text: 'You have successfully signed in with email and password.',
+                text: 'You have successfully signed in with email and password, now you will be redirected to the home page.',
                 icon: 'success',
                 confirmButtonText: 'Great!',
                 confirmButtonColor: '#2ecc71',
-                willClose: function () {
-                    signInForm.reset();
-                    resetFormControls(signInFields)
-                }
+                timer: 2000,
+                timerProgressBar: true,
             })
+
+            setTimeout(() => window.location.href = './../home.html', 2000)
         })
         .catch((error) => {
             console.error(error.message)
