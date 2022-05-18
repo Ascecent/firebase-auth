@@ -40,14 +40,16 @@ const rulesForSassStyles = {
 
 const plugins = [
   new HtmlWebpackPlugin({
-    filename: 'index.html',
+    filename: 'index[contenthash].html',
     showErrors: true,
     template: "./src/index.html",
   }),
   new HtmlWebpackPlugin({
-    filename: 'home.html',
+    filename: 'home[contenthash].html',
     showErrors: true,
-    template: './src/home.html'
+    template: './src/home.html',
+    chunks: ['home'],
+    excludeChunks: ['app']
   }),
   new MiniCssExtractPlugin({
     filename: "[name][contenthash].bundle.css",
@@ -59,7 +61,10 @@ const plugins = [
 const rules = [rulesForSassStyles, rulesForAssets];
 
 module.exports = {
-  entry: "./src/js/App.js",
+  entry: {
+    home: './src/js/Home.js',
+    app: './src/js/App.js',
+  },
   output: {
     filename: "[name][contenthash].bundle.js",
     path: path.resolve(__dirname, "build"),
@@ -73,8 +78,7 @@ module.exports = {
   resolve: {
     alias: {
       Images: path.resolve(__dirname, "src/assets"),
-      Styles: path.resolve(__dirname, "src/scss/app.scss"),
-      Homepage: path.resolve(__dirname, "src/home.html"),
+      AppStyles: path.resolve(__dirname, "src/scss/app.scss"),
     },
   },
 

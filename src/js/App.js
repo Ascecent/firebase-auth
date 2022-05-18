@@ -1,4 +1,4 @@
-import "Styles"
+import "AppStyles"
 
 import {
     getInputs,
@@ -9,6 +9,8 @@ import {
 
 import LoginImage from 'Images/login_illustration.svg'
 import SignUpImage from 'Images/signup_illustration.svg'
+
+window.location.href = './../home.html'
 
 import {
     initializeApp
