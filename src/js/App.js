@@ -183,6 +183,7 @@ googleAuthButton.addEventListener('click', e => {
             const credential = GoogleAuthProvider.credentialFromResult(result)
             const token = credential.accessToken
             const user = result.user
+            alert('Connected with Google')
             console.log(result)
         }).catch((error) => {
             const errorCode = error.code
@@ -199,6 +200,7 @@ facebookAuthButton.addEventListener('click', e => {
             case 'not_authorized':
                 signInWithPopup(auth, facebookProvider)
                     .then((result) => {
+                        console.log('Hola')
                         const user = result.user
                         const credential = FacebookAuthProvider.credentialFromResult(result)
                         const accessToken = credential.accessToken
@@ -213,6 +215,7 @@ facebookAuthButton.addEventListener('click', e => {
                 break
 
             case 'connected':
+                alert('Connected with Facebook')
                 FB.logout()
                 break
 
