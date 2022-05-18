@@ -189,26 +189,36 @@ googleAuthButton.addEventListener('click', e => {
             const errorMessage = error.message
             const email = error.email
             const credential = GoogleAuthProvider.credentialFromError(error)
-            // ...
         });
 })
 
 facebookAuthButton.addEventListener('click', e => {
     FB.getLoginStatus(function (response) {
-        if (response.status === 'unknown') {
-            signInWithPopup(auth, facebookProvider)
-                .then((result) => {
-                    const user = result.user
-                    const credential = FacebookAuthProvider.credentialFromResult(result)
-                    const accessToken = credential.accessToken
-                    console.log(result)
-                })
-                .catch((error) => {
-                    const errorCode = error.code
-                    const errorMessage = error.message
-                    const email = error.email
-                    const credential = FacebookAuthProvider.credentialFromError(error)
-                });
+        switch (response.status) {
+            case 'unknown':
+            case 'not_authorized':
+                signInWithPopup(auth, facebookProvider)
+                    .then((result) => {
+                        const user = result.user
+                        const credential = FacebookAuthProvider.credentialFromResult(result)
+                        const accessToken = credential.accessToken
+                        console.log(result)
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code
+                        const errorMessage = error.message
+                        const email = error.email
+                        const credential = FacebookAuthProvider.credentialFromError(error)
+                    });
+                break
+
+            case 'connected':
+                FB.logout()
+                break
+
+            default:
+                alert('No se obtuvo estado de FBProvider')
+                break
         }
     });
 })
