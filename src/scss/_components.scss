@@ -2,23 +2,182 @@
 ================     COMPONENTS STYLES    =================
 =========================================================*/
 
-.heading {
-  font-size: pxToRem(40);
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: pxToRem(1000);
+  max-width: 100%;
+  min-height: pxToRem(650);
+
+  &.right-panel-active {
+    .sign-in-container {
+      transform: translateX(100%);
+    }
+
+    .sign-up-container {
+      transform: translateX(100%);
+      opacity: 1;
+      z-index: 5;
+      animation: show 0.6s;
+    }
+
+    .overlay-container {
+      transform: translateX(-100%);
+    }
+
+    .overlay {
+      transform: translateX(50%);
+    }
+
+    .overlay-left {
+      transform: translateX(0);
+    }
+
+    .overlay-right {
+      transform: translateX(20%);
+    }
+  }
 }
 
-.greetings-text {
-  font-size: pxToRem(18);
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.overlay {
+  background: #ff416c;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+
+  &-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+  }
+
+  &-left {
+    transform: translateX(-20%);
+  }
+
+  &-right {
+    right: 0;
+    transform: translateX(0);
+  }
+
+  &-image {
+    width: pxToRem(300);
+    margin-block: pxToRem(20);
+  }
+}
+
+.social {
+  &-heading {
+    margin: pxToRem(20) 0 pxToRem(30);
+    position: relative;
+
+    p {
+      background-color: $white;
+      position: relative;
+      left: 50%;
+      top: -50%;
+      transform: translateX(-50%) translateY(50%);
+      display: inline-block;
+      margin: 0;
+      padding-inline: pxToRem(10);
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      height: pxToRem(1);
+      border-bottom: 1px solid $black;
+      position: relative;
+      top: 50%;
+    }
+  }
+
+  &-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: pxToRem(20);
+
+    .social {
+      border-radius: pxToRem(10);
+
+      .fa-brands {
+        padding-right: pxToRem(10);
+      }
+
+      &.facebook {
+        background-color: $facebookBg;
+      }
+    }
+  }
 }
 
 //================
 // Form
 //================
 
-#login_form {
-  margin-top: 2rem;
+.form-heading {
+  font-size: pxToRem(20);
+  margin-bottom: pxToRem(20);
+
+  .fa-solid {
+    font-size: pxToRem(48);
+    margin-bottom: pxToRem(10);
+  }
 }
 
-/* Form control component */
 .form-control {
   position: relative;
   padding: 0.8rem 0;
@@ -30,9 +189,6 @@
     right: 1rem;
     visibility: hidden;
   }
-  /* ----- custom-form-control STATES BEGIN -------- */
-
-  /* SUCCESS STATE */
   &.success {
     .form-input {
       outline: 2px solid $success;
@@ -79,7 +235,6 @@
     padding 0.1s ease;
 }
 
-/* Styles for the inputs of the form */
 .form-input {
   padding: 1rem 2.5rem 1rem 1rem;
   font-size: 1rem;
@@ -139,25 +294,22 @@
   }
 }
 
-/* Submit button styling */
-.btn-signin {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+.submit-btn {
+  margin-bottom: 3rem;
   padding: 1rem;
   border-radius: 1rem;
   width: 100%;
   border: none;
-  background: $pink;
+  background: $red;
   color: #fff;
   font-weight: 700;
-  cursor: pointer;
 }
 
 .success__btn {
   padding: 1rem 2rem;
   text-decoration: none;
   display: inline-block;
-  background: $pink;
+  background: $red;
   color: #fff;
   font-weight: 700;
   border-radius: 1rem;
@@ -174,43 +326,3 @@
   border-radius: 1rem;
   margin-top: 1rem;
 }
-
-.btn-signin:hover,
-.success__btn:hover {
-  background: $pinkHover;
-}
-
-.btn-signin.disabled {
-  background: $pinkDisabled;
-  cursor: default;
-}
-
-//================
-
-.page-loader-container {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: auto;
-  background-color: $white;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: visible;
-  opacity: 1;
-}
-
-//================
-// Login illustration
-//================
-
-.login-illustration {
-  background: url("./../assets/login.jpg") center/cover no-repeat;
-  width: 100%;
-  min-height: 100%;
-}
-
-//================

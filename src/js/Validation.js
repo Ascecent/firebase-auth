@@ -3,8 +3,7 @@ const expressions = {
 }
 
 const form_controls = document.querySelectorAll('.form-control')
-
-export const submitButton = document.getElementById("submitFormButton");
+let submitButton = document.getElementById("submitFormButton")
 
 export const getInputs = (
     selector = "#login_form .form-control > input"
@@ -19,8 +18,10 @@ export const getInputs = (
 export function initValidation(
     inputs,
     obj,
+    newSubmitButton = null,
     validationFunction = checkInputValidity,
 ) {
+    if (!submitButton) submitButton = newSubmitButton;
     submitButton.disabled = true;
 
     inputs.forEach((input) => {
@@ -58,9 +59,9 @@ export function validateRegex(target, regex, obj) {
     if (expressions === undefined) return false;
 
     const validation =
-        regex == "empty"
-            ? !(target.value === "")
-            : expressions[regex].test(target.value);
+        regex == "empty" ?
+        !(target.value === "") :
+        expressions[regex].test(target.value);
 
     handleInputState(target, validation, obj);
     return validation;
@@ -127,6 +128,7 @@ export function resetFormControls(obj) {
     form_controls.forEach((control) => {
         control.className = "form-control";
     });
+
     resetInputsCheck(obj);
     handleSubmitButtonState(obj)
 }

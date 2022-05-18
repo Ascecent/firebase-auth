@@ -38,9 +38,8 @@ $breakpoints: (
 // ------------
 
 // Primary
-$pink: #fe34f2;
-$pinkDisabled: hsl(304, 99%, 80%);
-$pinkHover: hsl(304, 99%, 40%);
+$red: #ff4b2b;
+$facebookBg: hsl(210, 63%, 45%);
 
 // Neutral
 $success: #2ecc71;
@@ -51,7 +50,7 @@ $white: hsl(0, 0%, 100%);
 // Checkbox colors
 $border-default: #bbbbc1;
 $border-hover: #9898a3;
-$active: $pink;
+$active: $red;
 $active-tick: #ffffff;
 
 // ------------
@@ -62,8 +61,10 @@ $active-tick: #ffffff;
 
 // Family
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 $fontFamilyPoppins: "Poppins", sans-serif;
+$fontFamilyMontserrat: "Montserrat", sans-serif;
 
 // Size
 $fontSizeNormal: 1rem;
@@ -118,33 +119,63 @@ $fontWeightBold: 700;
 // -------------------------------
 
 body {
-  font-family: $fontFamilyPoppins;
-}
-
-.main {
+  background: #f6f5f7;
   display: flex;
-  justify-content: space-between;
-  min-height: 100vh;
-  background-color: $white;
-  color: $black;
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 50%;
-    padding-inline: 12%;
-  }
-
-  &__illustration {
-    min-width: 50%;
-  }
+  justify-content: center;
+  align-items: center;
+  font-family: $fontFamilyPoppins;
+  height: 100vh;
 }
 
-a {
-  color: $pink;
-}
-
-.text-center {
+h2 {
   text-align: center;
+}
+
+p {
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
+}
+
+button {
+  border: none;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-weight: bold;
+  padding: pxToRem(15) pxToRem(40);
+  width: 100%;
+  transition: transform 80ms ease-in;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.ghost {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    width: auto;
+    border-radius: pxToRem(20);
+  }
+}
+
+h1 {
+  margin: 0;
+}
+
+form {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: pxToRem(20) calc(100% - 90%);
+  height: 100%;
 }

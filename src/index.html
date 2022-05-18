@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="page-loader-container show" id="page-loader">
+  <!-- <div class="page-loader-container show" id="page-loader">
     <svg width="140" height="140" viewBox="0 0 140 140" class="page-loader-svg">
       <g fill="none" fill-rule="evenodd">
         <g fill="#fe34f2" fill-opacity=".15" transform="translate(0 6)">
@@ -25,39 +25,101 @@
       </g>
     </svg>
   </div>
+ -->
+  <main class="container" id="container">
 
-  <main class="main">
-    <section class="main__content" id="content-emitter">
-      <img id="icon" alt="Firebase Icon">
-      <h1 class="heading">Welcome back</h1>
-      <p class="greetings-text">Welcome!, it's a pleasure to have you back in, please enter your details.</p>
-      <form id="login_form" method="post">
+    <section class="form-container sign-up-container">
+      <form action="#" id="signUpForm" method="post">
+        <div class="form-heading">
+          <span class="fa-solid fa-satellite-dish"></span>
+          <h1>Sign Up</h1>
+        </div>
+
         <div class="form-control">
-          <input type="email" name="email" id="email" placeholder=" " class="form-input" autocomplete="off"
+          <input type="email" name="signUpEmail" id="signUpEmail" placeholder=" " class="form-input" autocomplete="off"
             data-validation="email" data-error-message="Invalid email address, please enter a valid email address." />
-          <label for="email" class="form-label">Email address</label>
+          <label for="signUpEmail" class="form-label">Email address</label>
           <span class="fa-solid fa-circle-check success-icon"></span>
           <span class="fa-solid fa-circle-exclamation error-icon"></span>
           <small class="error-message">Default Message</small>
         </div>
 
         <div class="form-control">
-          <input type="password" name="password" id="password" placeholder=" " class="form-input" required="true"
-            autocomplete="off" data-validation="empty" data-error-message="Required field" />
-          <label for="password" class="form-label">Password</label>
+          <input type="password" name="signUpPassword" id="signUpPassword" placeholder=" " class="form-input"
+            required="true" autocomplete="off" data-validation="empty" data-error-message="Required field" />
+          <label for="signUpPassword" class="form-label">Password</label>
+          <span class="fa-solid fa-circle-check success-icon"></span>
+          <span class="fa-solid fa-circle-exclamation error-icon"></span>
+          <small class="error-message">Default Message</small>
+        </div>
+        <button class="submit-btn" type="submit" id="signUpButton">Sign Up</button>
+      </form>
+    </section>
+
+    <section class="form-container sign-in-container">
+      <form action="#" id="signInForm" method="post">
+        <div class="form-heading">
+          <span class="fa-solid fa-shuttle-space"></span>
+          <h1>Sign in</h1>
+        </div>
+
+        <div class="form-control">
+          <input type="email" name="signInEmail" id="signInEmail" placeholder=" " class="form-input" autocomplete="off"
+            data-validation="email" data-error-message="Invalid email address, please enter a valid email address." />
+          <label for="signInEmail" class="form-label">Email address</label>
           <span class="fa-solid fa-circle-check success-icon"></span>
           <span class="fa-solid fa-circle-exclamation error-icon"></span>
           <small class="error-message">Default Message</small>
         </div>
 
-        <button id="submitFormButton" class="btn-signin disabled" type="submit">Sign in</button>
+        <div class="form-control">
+          <input type="password" name="signInPassword" id="signInPassword" placeholder=" " class="form-input"
+            required="true" autocomplete="off" data-validation="empty" data-error-message="Required field" />
+          <label for="signInPassword" class="form-label">Password</label>
+          <span class="fa-solid fa-circle-check success-icon"></span>
+          <span class="fa-solid fa-circle-exclamation error-icon"></span>
+          <small class="error-message">Default Message</small>
+        </div>
+
+        <button class="submit-btn" type="submit" id="submitFormButton">Sign In</button>
+
+        <div class="social-heading">
+          <span></span>
+          <p>Or use a social account</p>
+        </div>
+
+        <div class="social-container">
+          <button type="button" class="social facebook" id="facebookAuthButton">
+            <span class="fa-brands fa-facebook-f"></span>
+            Facebook
+          </button>
+
+          <button type="button" class="social google" id="googleAuthButton">
+            <span class="fa-brands fa-google"></span>
+            Google
+          </button>
+        </div>
       </form>
-      <p class="text-center">Don't have an account? <a href="#">Sign up</a></p>
+
     </section>
 
-    <section class="main__illustration">
-      <div class="login-illustration" id="image-emitter"></div>
+    <section class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <img class="overlay-image" id="overlayLeftImage" title="Login illustration">
+          <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p>Enter your personal details and start journey with us</p>
+          <img class="overlay-image" id="overlayRightImage" title="SignUp illustration">
+          <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
     </section>
+
   </main>
 </body>
 
