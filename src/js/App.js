@@ -10,8 +10,6 @@ import {
 import LoginImage from 'Images/login_illustration.svg'
 import SignUpImage from 'Images/signup_illustration.svg'
 
-window.location.href = './../home.html'
-
 import {
     initializeApp
 } from 'firebase/app';
@@ -176,7 +174,7 @@ googleAuthButton.addEventListener('click', e => {
                     timerProgressBar: true,
                 })
 
-                setTimeout(() => window.location.href = 'Homepage', 2000)
+                setTimeout(() => window.location.href = './../home.html', 2000)
             }
         }).catch((error) => {
             console.log(error)
@@ -207,7 +205,7 @@ facebookAuthButton.addEventListener('click', e => {
                     timerProgressBar: true,
                 })
 
-                setTimeout(() => window.location.href = 'Homepage', 2000)
+                setTimeout(() => window.location.href = './../home.html', 2000)
             }
         })
         .catch((error) => {

@@ -40,12 +40,12 @@ const rulesForSassStyles = {
 
 const plugins = [
   new HtmlWebpackPlugin({
-    filename: 'index[contenthash].html',
+    filename: 'index.html',
     showErrors: true,
     template: "./src/index.html",
   }),
   new HtmlWebpackPlugin({
-    filename: 'home[contenthash].html',
+    filename: 'home.html',
     showErrors: true,
     template: './src/home.html',
     chunks: ['home'],
