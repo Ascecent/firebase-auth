@@ -157,11 +157,25 @@ signUpForm.addEventListener('submit', function (e) {
 googleAuthButton.addEventListener('click', e => {
     signInWithPopup(auth, googleProvider)
         .then((result) => {
+            console.log(result)
+
             const credential = GoogleAuthProvider.credentialFromResult(result)
             const token = credential.accessToken
             const user = result.user
-            alert('Connected with Google')
-            console.log(result)
+
+            if (token && user) {
+                Swal.fire({
+                    title: 'Success Google Login',
+                    text: 'You have successfully login with Google, now you will be redirected to the home page.',
+                    icon: 'success',
+                    confirmButtonText: 'Great!',
+                    confirmButtonColor: '#2ecc71',
+                    timer: 2000,
+                    timerProgressBar: true,
+                })
+
+                setTimeout(() => window.location.href = 'Homepage', 2000)
+            }
         }).catch((error) => {
             console.log(error)
             const errorCode = error.code
@@ -174,10 +188,25 @@ googleAuthButton.addEventListener('click', e => {
 facebookAuthButton.addEventListener('click', e => {
     signInWithPopup(auth, facebookProvider)
         .then((result) => {
+            console.log(result)
+
             const user = result.user
             const credential = FacebookAuthProvider.credentialFromResult(result)
             const accessToken = credential.accessToken
-            console.log(result)
+
+            if (accessToken && user) {
+                Swal.fire({
+                    title: 'Success Facebook Login',
+                    text: 'You have successfully login with Facebook, now you will be redirected to the home page.',
+                    icon: 'success',
+                    confirmButtonText: 'Great!',
+                    confirmButtonColor: '#2ecc71',
+                    timer: 2000,
+                    timerProgressBar: true,
+                })
+
+                setTimeout(() => window.location.href = 'Homepage', 2000)
+            }
         })
         .catch((error) => {
             console.log(error)

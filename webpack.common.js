@@ -40,8 +40,14 @@ const rulesForSassStyles = {
 
 const plugins = [
   new HtmlWebpackPlugin({
+    filename: 'index.html',
     showErrors: true,
     template: "./src/index.html",
+  }),
+  new HtmlWebpackPlugin({
+    filename: 'home.html',
+    showErrors: true,
+    template: './src/home.html'
   }),
   new MiniCssExtractPlugin({
     filename: "[name][contenthash].bundle.css",
@@ -60,12 +66,15 @@ module.exports = {
     clean: true,
   },
 
-  module: { rules },
+  module: {
+    rules
+  },
 
   resolve: {
     alias: {
       Images: path.resolve(__dirname, "src/assets"),
       Styles: path.resolve(__dirname, "src/scss/app.scss"),
+      Homepage: path.resolve(__dirname, "src/home.html"),
     },
   },
 
