@@ -43,6 +43,8 @@ const plugins = [
     filename: 'index.html',
     showErrors: true,
     template: "./src/index.html",
+    chunks: ['app'],
+    exclude: ['home']
   }),
   new HtmlWebpackPlugin({
     filename: 'home.html',
