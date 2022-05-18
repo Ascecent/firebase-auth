@@ -32,29 +32,6 @@ window.onload = function () {
     document.getElementById('overlayLeftImage').src = LoginImage
 }
 
-window.fbAsyncInit = function () {
-    FB.init({
-        appId: '1005646193644331',
-        cookie: true,
-        xfbml: true,
-        version: 'v13.0'
-    });
-
-    FB.AppEvents.logPageView();
-
-};
-
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {
-        return;
-    }
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
 const setLoginInterface = function () {
     container.classList.remove("right-panel-active")
     resetFormControls(signUpFields)
@@ -71,8 +48,8 @@ const app = initializeApp(config),
     container = document.getElementById('container'),
     signInForm = document.getElementById('signInForm'),
     signUpForm = document.getElementById('signUpForm'),
-    googleSignIn = document.getElementById('googleAuthButton'),
-    facebookSignIn = document.getElementById('facebookAuthButton'),
+    googleAuthButton = document.getElementById('googleAuthButton'),
+    facebookAuthButton = document.getElementById('facebookAuthButton'),
     signInFields = {
         signInEmail: false,
         signInPassword: false
@@ -186,6 +163,7 @@ googleAuthButton.addEventListener('click', e => {
             alert('Connected with Google')
             console.log(result)
         }).catch((error) => {
+            console.log(error)
             const errorCode = error.code
             const errorMessage = error.message
             const email = error.email
@@ -194,34 +172,18 @@ googleAuthButton.addEventListener('click', e => {
 })
 
 facebookAuthButton.addEventListener('click', e => {
-    FB.getLoginStatus(function (response) {
-        switch (response.status) {
-            case 'unknown':
-            case 'not_authorized':
-                signInWithPopup(auth, facebookProvider)
-                    .then((result) => {
-                        console.log('Hola')
-                        const user = result.user
-                        const credential = FacebookAuthProvider.credentialFromResult(result)
-                        const accessToken = credential.accessToken
-                        console.log(result)
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code
-                        const errorMessage = error.message
-                        const email = error.email
-                        const credential = FacebookAuthProvider.credentialFromError(error)
-                    });
-                break
-
-            case 'connected':
-                alert('Connected with Facebook')
-                FB.logout()
-                break
-
-            default:
-                alert('No se obtuvo estado de FBProvider')
-                break
-        }
-    });
+    signInWithPopup(auth, facebookProvider)
+        .then((result) => {
+            const user = result.user
+            const credential = FacebookAuthProvider.credentialFromResult(result)
+            const accessToken = credential.accessToken
+            console.log(result)
+        })
+        .catch((error) => {
+            console.log(error)
+            const errorCode = error.code
+            const errorMessage = error.message
+            const email = error.email
+            const credential = FacebookAuthProvider.credentialFromError(error)
+        });
 })
